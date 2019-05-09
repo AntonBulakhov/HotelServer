@@ -20,6 +20,8 @@ export class PaymantmodalComponent implements OnInit {
   public sub: EventrecordModel = new EventrecordModel();
   public pplCount:number = 1;
 
+  public alreadySigned: boolean = false;
+
   constructor(private eventRecordService: EventrecordService,
               private router: Router,
               public auth: AuthService) {
@@ -27,6 +29,13 @@ export class PaymantmodalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
+  }
+
+  public loadData():void{
+    this.eventRecordService.subExists(this.event).subscribe(value=>{
+      this.alreadySigned = value;
+    })
   }
 
 
