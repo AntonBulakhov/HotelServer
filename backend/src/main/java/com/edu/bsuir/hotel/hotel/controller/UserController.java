@@ -2,13 +2,18 @@ package com.edu.bsuir.hotel.hotel.controller;
 
 import com.edu.bsuir.hotel.hotel.converter.UserToUserDTO;
 import com.edu.bsuir.hotel.hotel.dto.UserDTO;
+import com.edu.bsuir.hotel.hotel.entity.ReservationEntity;
+import com.edu.bsuir.hotel.hotel.entity.RoomEntity;
 import com.edu.bsuir.hotel.hotel.entity.UserEntity;
+import com.edu.bsuir.hotel.hotel.service.ReservationService;
+import com.edu.bsuir.hotel.hotel.service.RoomService;
 import com.edu.bsuir.hotel.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +22,10 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private ReservationService reservationService;
+    @Autowired
+    private RoomService roomService;
 
     private UserToUserDTO userConverter = new UserToUserDTO();
 
@@ -95,7 +104,19 @@ public class UserController {
         UserEntity ent = op.get();
         ent.setBlocked((byte) 1);
         userService.save(ent);
+        deleteReservation(ent);
         return ResponseEntity.ok().build();
+    }
+
+    private void deleteReservation(UserEntity ent){
+        ArrayList<ReservationEntity> list = (ArrayList<ReservationEntity>) reservationService.getAllByUser(ent);
+
+        for (ReservationEntity res:list) {
+            RoomEntity room = res.getRoom();
+            room.setIsActive((byte) 1);
+            roomService.save(room);
+            reservationService.delete(res);
+        }
     }
 
     @PreAuthorize("hasRole('ADMIN')")
