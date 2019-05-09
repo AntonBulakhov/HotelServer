@@ -31,7 +31,11 @@
           </th>
           <th>
             <h2>Название ивента</h2>
-            <h5>{{eventrecord.evet.name}}</h5>
+            <h5>{{eventrecord.event.name}}</h5>
+          </th>
+          <th>
+            <h2>Тип ивента</h2>
+            <h5>{{eventrecord.event.eventType}}</h5>
           </th>
           <th>
             <h2>Цена</h2>
@@ -39,7 +43,7 @@
           </th>
           <th>
             <h2>Даты</h2>
-            <h5>{{eventrecord.timeFrom}} - {{eventrecord.timeTo}}</h5>
+            <h5>{{eventrecord.event.dateTimeStart | date:'short'}} - {{eventrecord.event.dateTimeEnd | date:'short'}}</h5>
           </th>
         </tr>
       </table>

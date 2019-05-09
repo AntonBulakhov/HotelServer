@@ -8,7 +8,7 @@
     <p class="card-text">{{event.description}}</p>
     <p class="card-text">Цена: {{event.price}}$</p>
     <p class="card-text">С: {{event.dateTimeStart | date:'short'}} По: {{event.dateTimeEnd | date:'short'}}</p>
-    <button class="btn-lg  btn-danger"  data-toggle="modal" data-target="#toUpModal" (click)="setPrice(event.price); setEvent(event)">Записаться</button>
+    <button class="btn-lg  btn-danger" *ngIf="auth.user != null"  data-toggle="modal" data-target="#toUpModal" (click)="setPrice(event.price); setEvent(event)">Записаться</button>
   </div>
 </div>
 </div>

@@ -13,7 +13,7 @@ export class EventrecordService {
   constructor( private http: HttpClient ,
                private auth: AuthService) { }
   public getAllEventrecords():Observable<EventrecordModel[]>{
-    return this.http.get<EventrecordModel[]>("/api/event-record/list/user/"+this.auth.user.id);
+    return this.http.get<EventrecordModel[]>("/api/event-records/list/user/"+this.auth.user.id);
   }
 
   public subscribeEvent(event: EventrecordModel):Observable<EventrecordModel>{
