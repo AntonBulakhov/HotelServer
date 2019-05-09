@@ -7,5 +7,8 @@
 </section>
 <div class="clearfix"></div>
 <app-reviewcard *ngFor="let rev of reviews" [reviews]="rev"></app-reviewcard>
-<app-reviewblank *ngIf="auth.user != null && !alreadyReviewed && canComment"></app-reviewblank>
+<app-reviewblank >
+  <!--*ngIf="auth.user != null && !alreadyReviewed && canComment">-->
+
+</app-reviewblank>
 <app-footer></app-footer>

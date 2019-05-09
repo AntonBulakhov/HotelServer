@@ -10,3 +10,7 @@ h1{
 a{
   color: white;
 }
+
+.inner-wrapper{
+  left: 500px;
+}

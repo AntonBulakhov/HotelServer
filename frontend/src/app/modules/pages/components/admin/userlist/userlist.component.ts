@@ -8,19 +8,18 @@ import {UserService} from "../../../../../services/user.service";
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent implements OnInit {
-  public users: UserSafeModel[];
+public users: UserSafeModel[];
 
-  constructor(private userService: UserService) { }
+constructor(private userService: UserService) { }
 
-  ngOnInit() {
-    this.loadData();
-  }
+ngOnInit() {
+  this.loadData();
+}
 
-  private loadData():void{
-    this.userService.getAllUsers().subscribe(data=>{
-      this.users = data as UserSafeModel[];
-
-    })
-  }
+private loadData():void{
+  this.userService.getAllUsers().subscribe(data=>{
+  this.users = data as UserSafeModel[];
+})
+}
 
 }

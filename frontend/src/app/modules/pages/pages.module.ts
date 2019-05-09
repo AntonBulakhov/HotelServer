@@ -35,6 +35,7 @@ import { ErrorComponent } from './components/error/error.component';
 import {AuthService} from "../../services/auth.service";
 import {AuthInterceptorService} from "../../services/auth-interceptor.service";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import { BlacklistComponent } from './components/blacklist/blacklist.component';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
     ConferenceComponent, RoomsComponent, ReviewComponent, ProfileComponent, RoombookComponent,
     EventbookComponent, ConfbookComponent, UsersComponent, SignComponent, ReductprofComponent,
     AddroomComponent, RoomlistComponent, AddeventComponent, EventlistComponent, ConflistComponent,
-    AdminmenuComponent, AddadminComponent, UserlistComponent, ErrorComponent],
+    AdminmenuComponent, AddadminComponent, UserlistComponent, ErrorComponent, BlacklistComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -65,7 +66,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
     ReductprofComponent,
     AddroomComponent, RoomlistComponent, AddeventComponent, EventlistComponent, ConflistComponent, AdminmenuComponent,
     AddadminComponent, UserlistComponent,
-    ErrorComponent
+    ErrorComponent, BlacklistComponent
   ],
   providers:[
     ReviewService,
