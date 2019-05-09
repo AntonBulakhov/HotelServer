@@ -21,27 +21,27 @@ export class RoombookComponent implements OnInit {
     if(type){
       switch (type) {
         case "cr":{
-          this.roomType = "Classic Room";
+          this.roomType = "Классический";
           break;
         }
         case "crv":{
-          this.roomType = "Classic Riverside View";
+          this.roomType = "Классический с видом на море";
           break;
         }
         case "hs":{
-          this.roomType = "Hospitality Suite";
+          this.roomType = "Люкс Hospitality";
           break;
         }
         case "pms":{
-          this.roomType = "Premium Suite";
+          this.roomType = "Люкс Premium";
           break;
         }
         case "ls":{
-          this.roomType = "Luxury Suite";
+          this.roomType = "Роскошный люкс";
           break;
         }
         case "pds":{
-          this.roomType = "Presidential Suite";
+          this.roomType = "Президентский люкс";
           break;
         }
       }
