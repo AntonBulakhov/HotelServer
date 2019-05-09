@@ -67,7 +67,6 @@ export class RegistrblankComponent implements OnInit {
 
   public regNewUser():void{
     if(!this.userExistsByEmail && !this.userExistsByLogin){
-      this.newUser.logoUrl = "default-logo.jpg";
       if(this.isAdmin){
         this.newUser.role = 1;
       }else {

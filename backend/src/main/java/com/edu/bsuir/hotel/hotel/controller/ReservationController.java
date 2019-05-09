@@ -8,6 +8,7 @@ import com.edu.bsuir.hotel.hotel.service.RoomService;
 import com.edu.bsuir.hotel.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +24,9 @@ public class ReservationController {
     @Autowired
     private UserService userService;
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PostMapping("")
-    private ResponseEntity saveReservation(@RequestBody ReservationEntity reservationEntity){
+    public ResponseEntity saveReservation(@RequestBody ReservationEntity reservationEntity){
         RoomEntity entity = reservationEntity.getRoom();
         entity.setIsActive((byte)0);
         roomService.save(entity);
@@ -37,6 +39,7 @@ public class ReservationController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/list/user/{id}")
     public List<ReservationEntity> getReservations(@PathVariable int id){
         Optional<UserEntity> user = userService.findById(id);

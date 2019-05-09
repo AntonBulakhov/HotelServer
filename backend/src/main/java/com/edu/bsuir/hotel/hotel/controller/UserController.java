@@ -6,6 +6,7 @@ import com.edu.bsuir.hotel.hotel.entity.UserEntity;
 import com.edu.bsuir.hotel.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,11 +20,13 @@ public class UserController {
 
     private UserToUserDTO userConverter = new UserToUserDTO();
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/login/{login}")
     public UserEntity getUserByLogin(@PathVariable(name = "login") String login){
         return userService.findByLogin(login);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/id/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable int id){
         Optional<UserEntity> userEntity = userService.findById(id);
@@ -55,6 +58,7 @@ public class UserController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("")
     public ResponseEntity saveNewUser(@RequestBody UserEntity userEntity){
         UserEntity userEntity1 = userService.save(userEntity);
@@ -65,6 +69,7 @@ public class UserController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/list")
     public ResponseEntity<List<UserDTO>> getUsersList(){
         List<UserEntity> userEntities = userService.findAllByBlocked((byte)0);
@@ -76,12 +81,14 @@ public class UserController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/blacklist")
     public List<UserDTO> getUserBlackList(){
         List<UserEntity> list = userService.findAllByBlocked((byte)1);
         return userConverter.convert(list);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/block/{id}")
     public ResponseEntity blockUser(@PathVariable int id){
         Optional<UserEntity> op = userService.findById(id);
@@ -91,6 +98,7 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/unblock/{id}")
     public ResponseEntity unblockUser(@PathVariable int id){
         Optional<UserEntity> op = userService.findById(id);

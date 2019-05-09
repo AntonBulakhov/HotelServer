@@ -10,6 +10,7 @@ import com.edu.bsuir.hotel.hotel.service.ReviewService;
 import com.edu.bsuir.hotel.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class ReviewController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/user/{id}")
     public ResponseEntity<Boolean> isCommented(@PathVariable int id){
         Optional<UserEntity> user = userService.findById(id);
@@ -50,6 +52,7 @@ public class ReviewController {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PostMapping("/user/{id}")
     public ResponseEntity<Boolean> comment(@PathVariable int id, @RequestBody ReviewEntity entity){
         Optional<UserEntity> user = userService.findById(id);
@@ -60,6 +63,7 @@ public class ReviewController {
         else return ResponseEntity.ok(false);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/available/user/{id}")
     public ResponseEntity<Boolean> canComment(@PathVariable int id){
         Optional<UserEntity> user = userService.findById(id);

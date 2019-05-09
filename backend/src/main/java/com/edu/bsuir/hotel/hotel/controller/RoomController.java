@@ -4,6 +4,7 @@ import com.edu.bsuir.hotel.hotel.entity.RoomEntity;
 import com.edu.bsuir.hotel.hotel.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class RoomController {
         return roomService.findAllByRoomType(type);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("")
     public RoomEntity saveRoom(@RequestBody RoomEntity roomEntity){
         return roomService.save(roomEntity);
@@ -38,6 +40,7 @@ public class RoomController {
         return roomService.findAll();
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PostMapping("/req")
     public ResponseEntity<RoomEntity> getRequired(@RequestBody RoomEntity roomEntity){
         List<RoomEntity> rooms = roomService.requiredRooms(roomEntity);
@@ -48,6 +51,7 @@ public class RoomController {
         }
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/deactive/id/{id}")
     public RoomEntity deactivate(@PathVariable int id){
         Optional<RoomEntity> room = roomService.findById(id);
@@ -56,6 +60,7 @@ public class RoomController {
         return roomService.save(entity);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/active/id/{id}")
     public RoomEntity activate(@PathVariable int id){
         Optional<RoomEntity> room = roomService.findById(id);

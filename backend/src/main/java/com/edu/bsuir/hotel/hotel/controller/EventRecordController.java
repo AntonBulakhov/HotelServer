@@ -8,6 +8,7 @@ import com.edu.bsuir.hotel.hotel.service.EventRecordService;
 import com.edu.bsuir.hotel.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,12 +27,14 @@ public class EventRecordController {
         return eventRecordService.save(entity);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/list/user/{id}")
     public List<EventRecordEntity> getAll(@PathVariable int id){
         Optional<UserEntity> user = userService.findById(id);
         return eventRecordService.getAll(user.get());
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @PostMapping("/ex/user/{id}")
     public ResponseEntity<Boolean> ifExistByUser(@PathVariable int id, @RequestBody EventEntity eventEntity){
         Optional<UserEntity> user = userService.findById(id);
