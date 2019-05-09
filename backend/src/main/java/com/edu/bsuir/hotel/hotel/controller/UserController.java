@@ -67,12 +67,36 @@ public class UserController {
 
     @GetMapping(value = "/list")
     public ResponseEntity<List<UserDTO>> getUsersList(){
-        List<UserEntity> userEntities = userService.findAll();
+        List<UserEntity> userEntities = userService.findAllByBlocked((byte)0);
         if(!userEntities.isEmpty()){
             List<UserDTO> userDTOS = userConverter.convert(userEntities);
             return ResponseEntity.ok(userDTOS);
         }else {
             return ResponseEntity.ok(null);
         }
+    }
+
+    @GetMapping("/blacklist")
+    public List<UserDTO> getUserBlackList(){
+        List<UserEntity> list = userService.findAllByBlocked((byte)1);
+        return userConverter.convert(list);
+    }
+
+    @PutMapping("/block/{id}")
+    public ResponseEntity blockUser(@PathVariable int id){
+        Optional<UserEntity> op = userService.findById(id);
+        UserEntity ent = op.get();
+        ent.setBlocked((byte) 1);
+        userService.save(ent);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/unblock/{id}")
+    public ResponseEntity unblockUser(@PathVariable int id){
+        Optional<UserEntity> op = userService.findById(id);
+        UserEntity ent = op.get();
+        ent.setBlocked((byte) 0);
+        userService.save(ent);
+        return ResponseEntity.ok().build();
     }
 }

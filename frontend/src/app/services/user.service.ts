@@ -24,9 +24,15 @@ export class UserService {
     return this.http.get("/api/users/login/"+login+"/ex");
   }
 
-  public getAllBlacklistUsers():Observable<UserModel>{
-    return this.http.get<UserModel>("/api/users/blacklist");
+  public getAllBlacklistUsers():Observable<UserModel[]>{
+    return this.http.get<UserModel[]>("/api/users/blacklist");
   }
 
+  public blockUserById(id: string):Observable<any>{
+    return this.http.put("/api/users/block/"+id, null);
+  }
 
+  public unblockUserById(id: string):Observable<any>{
+    return this.http.put("/api/users/unblock/"+id, null);
+  }
 }

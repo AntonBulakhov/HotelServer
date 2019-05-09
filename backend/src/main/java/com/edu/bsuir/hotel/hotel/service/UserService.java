@@ -10,5 +10,6 @@ public interface UserService {
     Optional<UserEntity> findById(int id);
     UserEntity findByEmail(String email);
     UserEntity save(UserEntity userEntity);
+    List<UserEntity> findAllByBlocked(byte bl);
     List<UserEntity> findAll();
 }

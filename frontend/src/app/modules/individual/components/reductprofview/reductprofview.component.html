@@ -10,23 +10,18 @@
         </section>
       </div>
       <div class="col-sm">
-        <form action="" method="post" name="registration" class="regblank">
+        <form action="" method="post" name="registration" class="regblank" *ngIf="loaded" (ngSubmit)="onSubmit()">
           <h5>Name</h5>
           <div class="input-group-prepend">
             <input type="email" name="first" class="form-control" id="firstname" aria-describedby=""
-                   placeholder="First Name">
+                   placeholder="First Name" value="{{user.firstName}}" [(ngModel)]="user.firstName">
             <input type="email" name="second" class="form-control" id="secondname" aria-describedby=""
-                   placeholder="Second Name">
+                   placeholder="Second Name" value="{{user.lastName}}" [(ngModel)]="user.lastName">
           </div>
           <h5>Email address</h5>
           <div class="input-group-prepend">
             <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
-                   placeholder="email@email.com">
-          </div>
-          <h5>Password</h5>
-          <div class="input-group-prepend">
-            <input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp"
-                   placeholder=" Password">
+                   placeholder="email@email.com" value="{{user.email}}" [(ngModel)]="user.email">
           </div>
           <h5>Birth Date</h5>
           <div class="input-group-prepend">
@@ -36,7 +31,7 @@
           <h5>Mobile number</h5>
           <div class="input-group-prepend">
             <input type="number" name="number" class="form-control" id="number" aria-describedby="emailHelp"
-                   placeholder="+375(**)-***-**-**">
+                   placeholder="+375*********" value="{{user.mobileNumber}}" [(ngModel)]="user.mobileNumber">
           </div>
           <div class="text-center mx-auto">
             <button type="submit" class=" btn btn-block mybtn btn-danger tx-tfm">Edit</button>

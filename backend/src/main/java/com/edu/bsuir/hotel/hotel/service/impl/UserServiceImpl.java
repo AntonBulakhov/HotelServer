@@ -46,6 +46,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    public List<UserEntity> findAllByBlocked(byte bl) {
+        return userRepository.findAllByBlocked(bl);
+    }
+
+    @Override
     public List<UserEntity> findAll() {
         return userRepository.findAll();
     }

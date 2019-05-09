@@ -13,6 +13,7 @@
           <th><h2>Email</h2></th>
           <th><h2>Мобильный номер</h2></th>
           <th><h2>Дата рождет</h2></th>
+          <th><h2>Действие</h2></th>
         </tr>
         <tr *ngFor="let user of users; let i = index">
           <th>
@@ -31,13 +32,13 @@
             <h5>{{user.email}}</h5>
           </th>
           <th>
-            <h5>{{user.mobileNumber}}</h5>
+            <h5>+{{user.mobileNumber}}</h5>
           </th>
           <th>
             <h5>{{user.birthDate}}</h5>
           </th>
           <th>
-            <button class="btn danger">Добавить в ЧС</button>
+            <button class="btn btn-danger" *ngIf="auth.user.id != user.id" (click)="blockUser(user.id)">Добавить в ЧС</button>
           </th>
         </tr>
       </table>

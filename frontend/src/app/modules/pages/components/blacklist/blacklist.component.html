@@ -11,7 +11,8 @@
           <th><h2>Фамилия</h2></th>
           <th><h2>Email</h2></th>
           <th><h2>Мобильный номер</h2></th>
-          <th><h2>Дата рождет</h2></th>
+          <th><h2>Дата рождения</h2></th>
+          <th><h2>Действие</h2></th>
         </tr>
         <tr *ngFor="let user of users; let i = index">
           <th>
@@ -33,7 +34,7 @@
             <h5>{{user.birthDate}}</h5>
           </th>
           <th>
-            <button class="btn danger">Убрать из ЧС</button>
+            <button class="btn btn-danger" *ngIf="auth.user.id != user.id" (click)="unblock(user.id)">Убрать из ЧС</button>
           </th>
         </tr>
       </table>
