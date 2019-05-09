@@ -67,6 +67,7 @@ export class BookroomcontentComponent implements OnInit {
     this.roomService.getRequiredRoom(this.requiredRoom).subscribe(data=>{
       if(data != null){
         this.newReservation.room = data;
+        console.log(this.newReservation.room.price);
         this.priceAll = this.date_diff_indays(this.newReservation.dateFrom, this.newReservation.dateTo) * this.newReservation.room.price *
           (1- this.auth.user.discount/100);
       }else {

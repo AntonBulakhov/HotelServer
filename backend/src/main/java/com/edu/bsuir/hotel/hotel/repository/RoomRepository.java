@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface RoomRepository extends CrudRepository<RoomEntity, Integer> {
     List<RoomEntity> findAllByRoomType(String roomType);
-    List<RoomEntity> findAllByHasBabyBedAndHasTvAndHasBathAndHasFridgeAndMaxPersonsGreaterThanAndIsActive(byte hasBabyBed,
+    List<RoomEntity> findAllByHasBabyBedAndHasTvAndHasBathAndHasFridgeAndMaxPersonsGreaterThanAndIsActiveAndRoomType(byte hasBabyBed,
                                                                                                byte hasTV,
                                                                                                byte hasBath,
                                                                                                byte hasFridge,
-                                                                                               int maxPersons, byte isActive);
+                                                                                               int maxPersons, byte isActive, String roomType);
 }

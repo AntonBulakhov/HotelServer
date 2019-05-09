@@ -26,8 +26,8 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     public List<RoomEntity> requiredRooms(RoomEntity roomEntity) {
-        return roomRepository.findAllByHasBabyBedAndHasTvAndHasBathAndHasFridgeAndMaxPersonsGreaterThanAndIsActive(roomEntity.getHasBabyBed(),
-                roomEntity.getHasTv(), roomEntity.getHasBath(), roomEntity.getHasFridge(), roomEntity.getMaxPersons(), (byte)1);
+        return roomRepository.findAllByHasBabyBedAndHasTvAndHasBathAndHasFridgeAndMaxPersonsGreaterThanAndIsActiveAndRoomType(roomEntity.getHasBabyBed(),
+                roomEntity.getHasTv(), roomEntity.getHasBath(), roomEntity.getHasFridge(), roomEntity.getMaxPersons(), (byte)1, roomEntity.getRoomType());
     }
 
     @Override
