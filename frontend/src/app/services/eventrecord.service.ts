@@ -12,4 +12,8 @@ export class EventrecordService {
   public getAllEventrecords():Observable<EventrecordModel[]>{
     return this.http.get<EventrecordModel[]>("/api/eventrecord/list");
   }
+
+  public subscribeEvent(event: EventrecordModel):Observable<EventrecordModel>{
+    return this.http.post<EventrecordModel>("/api/event-records", event);
+  }
 }

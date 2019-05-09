@@ -8,22 +8,10 @@
     <p class="card-text">{{event.description}}</p>
     <p class="card-text">Цена: {{event.price}}$</p>
     <p class="card-text">С: {{event.dateTimeStart | date:'short'}} По: {{event.dateTimeEnd | date:'short'}}</p>
-    <button class="btn-lg  btn-danger"  data-toggle="modal" data-target="#toUpModal">Записаться</button>
+    <button class="btn-lg  btn-danger"  data-toggle="modal" data-target="#toUpModal" (click)="setPrice(event.price)">Записаться</button>
   </div>
 </div>
 </div>
 
-<!--<div class="card text-center">-->
-  <!--<div class="card-header">-->
-    <!--<img src="../../../../../assets/images/javaevent.jpg"  alt="..." >-->
-  <!--</div>-->
-  <!--<div class="card-body">-->
-    <!--<h5 class="card-title">java meetup</h5>-->
-    <!--<p class="card-text">java meet up for bsuir students.</p>-->
-    <!--<a routerLink="/eventbook" class="btn-lg btn-danger">Go to event</a>-->
-  <!--</div>-->
-  <!--<div class="card-footer text-muted">-->
-    <!--2 days ago-->
-  <!--</div>-->
-<!--</div>-->
+<app-paymantmodal [price]="price"></app-paymantmodal>
 

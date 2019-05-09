@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {EventModel} from "../../../../models/event-model";
 import {EventService} from "../../../../services/event.service";
 import file from "../../../../../assets/imgSrc.json"
+import {AuthService} from "../../../../services/auth.service";
 
 @Component({
   selector: 'app-eventcards',
@@ -14,10 +15,17 @@ export class EventcardsComponent implements OnInit {
 
   public imgLink = file;
 
-  constructor(private eventService: EventService) { }
+  public price: number;
+
+  constructor(private eventService: EventService,
+              private auth: AuthService) { }
 
   ngOnInit() {
     this.loadData();
+  }
+
+  public setPrice(price: number){
+    this.price = price*(1- (this.auth.user.discount/100));
   }
 
   private loadData():void{

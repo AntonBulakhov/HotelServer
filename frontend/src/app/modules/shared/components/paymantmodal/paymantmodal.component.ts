@@ -3,6 +3,8 @@ import {ReservationModel} from "../../../../models/reservation-model";
 import {ReservationService} from "../../../../services/reservation.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../../services/auth.service";
+import {EventrecordModel} from "../../../../models/eventrecord-model";
+import {EventrecordService} from "../../../../services/eventrecord.service";
 
 @Component({
   selector: 'app-paymantmodal',
@@ -12,8 +14,8 @@ import {AuthService} from "../../../../services/auth.service";
 export class PaymantmodalComponent implements OnInit {
 
   @Input() public price: number;
-  @Input() public sub: ReservationModel;
-  constructor(private reservationService: ReservationService,
+  @Input() public sub: EventrecordModel;
+  constructor(private eventRecordService: EventrecordService,
               private router: Router,
               public auth: AuthService) { }
 
@@ -24,7 +26,7 @@ export class PaymantmodalComponent implements OnInit {
 
   public makePayment():void{
     this.sub.user = this.auth.user;
-    this.reservationService.postReservation(this.sub).subscribe(()=>{
+    this.eventRecordService.subscribeEvent(this.sub).subscribe(()=>{
       this.router.navigate(['']);
       setTimeout(location.reload.bind(location), 200);
     })
