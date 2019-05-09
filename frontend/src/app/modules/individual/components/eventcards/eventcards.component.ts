@@ -13,6 +13,8 @@ export class EventcardsComponent implements OnInit {
 
   public events: EventModel[];
 
+  public selectedEvent: EventModel = new EventModel();
+
   public imgLink = file;
 
   public price: number;
@@ -26,6 +28,10 @@ export class EventcardsComponent implements OnInit {
 
   public setPrice(price: number){
     this.price = price*(1- (this.auth.user.discount/100));
+  }
+
+  public setEvent(evetn: EventModel):void{
+    this.selectedEvent = evetn;
   }
 
   private loadData():void{

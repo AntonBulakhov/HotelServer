@@ -9,12 +9,11 @@
         <select id="mark" class="form-control form-control-lg col-3"
                 [(ngModel)]="review.mark" formControlName="mark" name="mark"
                 [ngClass]="{ 'is-invalid': submitted && f.mark.errors }" >
-          <option selected> </option>
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
-          <option>5</option>
+          <option selected>5</option>
         </select>
         <div *ngIf="submitted && f.mark.errors" class="invalid-feedback">
           <div *ngIf="f.mark.errors.required">Поставьте оценку</div>
