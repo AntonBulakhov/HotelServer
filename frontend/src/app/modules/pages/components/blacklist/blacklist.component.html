@@ -2,12 +2,11 @@
 
 <section class="contact-block">
   <div class="container">
-    <h1>Список пользователей</h1>
+    <h1>Черный список</h1>
     <div class="list-group full-width-div  col-12 table-responsive">
       <table class="table">
         <tr>
           <th><h2>#</h2></th>
-          <th><h2>Роль</h2></th>
           <th><h2>Имя</h2></th>
           <th><h2>Фамилия</h2></th>
           <th><h2>Email</h2></th>
@@ -17,9 +16,6 @@
         <tr *ngFor="let user of users; let i = index">
           <th>
             <h5>{{i+1}}</h5>
-          </th>
-          <th>
-            <h5>{{user.role == 0 ? "User" : "Admin"}}</h5>
           </th>
           <th>
             <h5>{{user.firstName}}</h5>
@@ -37,7 +33,7 @@
             <h5>{{user.birthDate}}</h5>
           </th>
           <th>
-            <button class="btn danger">Добавить в ЧС</button>
+            <button class="btn danger">Убрать из ЧС</button>
           </th>
         </tr>
       </table>

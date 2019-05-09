@@ -24,4 +24,9 @@ export class UserService {
     return this.http.get("/api/users/login/"+login+"/ex");
   }
 
+  public getAllBlacklistUsers():Observable<UserModel>{
+    return this.http.get<UserModel>("/api/users/blacklist");
+  }
+
+
 }

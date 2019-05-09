@@ -23,6 +23,7 @@ import {RoomlistComponent} from "./modules/pages/components/admin/roomlist/rooml
 import {UserlistComponent} from "./modules/pages/components/admin/userlist/userlist.component";
 import {AddadminComponent} from "./modules/pages/components/admin/addadmin/addadmin.component";
 import {ErrorComponent} from "./modules/pages/components/error/error.component";
+import {BlacklistComponent} from "./modules/pages/components/blacklist/blacklist.component";
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -47,7 +48,9 @@ const routes: Routes = [
   {path:'roomlist', component:RoomlistComponent},
   {path:'userlist', component:UserlistComponent},
   {path:'addadmin', component:AddadminComponent},
-  {path:'error', component:ErrorComponent}
+  {path:'error', component:ErrorComponent},
+  {path:'blacklist', component:BlacklistComponent}
+
 
 ];
 

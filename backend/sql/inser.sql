@@ -26,6 +26,7 @@ INSERT INTO `hoteldb`.`room` (`id`, `price`, `room_type`, `max_persons`, `is_act
 INSERT INTO `hoteldb`.`room` (`id`, `price`, `room_type`, `max_persons`, `is_active`, `has_baby_bed`, `has_tv`, `has_bath`, `has_fridge`) VALUES ('301', '1200', 'Президентский люкс', '6', '1', '1', '1', '1', '1');
 
 
+
 --User--
 
 INSERT INTO `hoteldb`.`user` ( `role`, `email`, `login`, `password`, `first_name`, `last_name`, `mobile_number`, `blocked`, `discount`, `birth_date`) VALUES ('1', 'antoxa@gmail.com', 'antoxa', '$10$pSA1DbY0DPI5RPU2O9KXQuzVsr/al41iMJ3Ada8VYGVdG1T3lLcj2', 'Антон', 'Булахов', '+375291234584', '0', '99', '1975-09-09');
