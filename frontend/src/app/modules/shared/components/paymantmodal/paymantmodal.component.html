@@ -2,6 +2,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <form class="px-4 py-3">
+        <div class="row" >
+          <label for="amount">Количество человек</label>
+          <select id="amount" class="form-control form-control-lg col-3">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
         <div class="row">
           <label for="cardNum">Номер карты</label>
           <input type="text" class="form-control" id="cardNum">
@@ -10,7 +20,7 @@
         <div class="row">
           <label for="cardName">Имя владельца карты</label>
           <input type="text" class="form-control" id="cardName">
-          <small class="text-muted">полное имя на карте</small>
+          <small class="text-muted">Полное имя на карте</small>
           <div class="invalid-feedback">Определите имя</div>
         </div>
         <div class="row">
@@ -23,6 +33,7 @@
             <input type="text" class="form-control" id="cardCVV">
           </div>
         </div>
+
         <div class="row justify-content-center">
           <div class="col-5">
             <label for="cardSum">Сумма</label>

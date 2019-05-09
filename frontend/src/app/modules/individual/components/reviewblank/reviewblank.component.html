@@ -2,16 +2,29 @@
   <div class="container">
     <div class="col-md-10 contact-form">
       <h3>Отправить <span>Отзыв</span></h3>
-      <label for="adult">Оценка</label>
-      <form action="" method="post" (ngSubmit)="comment()">
-        <select id="adult" class="form-control form-control-lg col-3" name="child" [(ngModel)]="review.mark">
+
+      <form action="" method="post" [formGroup]="reviewForm"            (ngSubmit)="onSubmit()">
+        <label class="btn-lg" for="mark">Оценка</label>
+
+        <select id="mark" class="form-control form-control-lg col-3"
+                [(ngModel)]="review.mark" formControlName="mark" name="mark"
+                [ngClass]="{ 'is-invalid': submitted && f.mark.errors }" >
+          <option selected> </option>
           <option>1</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
-          <option selected>5</option>
+          <option>5</option>
         </select>
-        <textarea class="form-control" name="Message" placeholder="Комментарий..." required="" [(ngModel)]="review.comment"></textarea>
+        <div *ngIf="submitted && f.mark.errors" class="invalid-feedback">
+          <div *ngIf="f.mark.errors.required">Поставьте оценку</div>
+        </div>
+        <textarea class="form-control" placeholder="Комментарий..." required=""
+                  [(ngModel)]="review.comment"  formControlName="comment" name="comment"
+                  [ngClass]="{ 'is-invalid': submitted && f.comment.errors }"></textarea>
+        <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
+          <div *ngIf="f.comment.errors.required">Напишите коментарий</div>
+        </div>
         <input type="submit" class="submit-btn inputtext" value="Отправить">
       </form>
     </div>
